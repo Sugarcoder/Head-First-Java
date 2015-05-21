@@ -124,5 +124,53 @@ pets[1].setSize(8);
 -------DECLARING & INITIALIZING INSTANCE VARIABLES---------
 
 - Instance variables always get a default value.
-Example: integers = 0, floating points = 0.0, booleans = false, references = null
+Example: 
+integers = 0 
+floating points = 0.0 
+booleans = false
+references = null
 
+- You can initialize (assign a value) to the variable at the same time. 
+Example: int size = 40;   String name = "Bubbles";
+
+
+
+--------INSTANCE VS. LOCAL VARIABLES---------
+
+- Instance variables are declared inside a class, but not within a method. 
+
+Example: 
+class Horse {
+	private double height = 15.2;
+	private String breed;
+}
+
+- Local variables are declared within a method.
+
+Example: 
+class Addthing {
+	int a;
+	int b = 12; 
+
+	public int add() {
+		int total = a + b; 
+		return total;
+	}
+}
+
+- Local variables must be initialized before use!
+
+Example: 
+
+class Foo {
+	public void go() {
+		int x = 5;             // Don't leave it blank (int x;)!
+		int z = x + 3;
+	}
+}
+
+
+
+-------COMPARISON--------
+
+- Use the == operator to compare two variables.
