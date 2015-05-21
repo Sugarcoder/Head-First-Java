@@ -1,0 +1,42 @@
+CH 2 CLASSES & OBJECTS - NOTES
+
+
+- When you design a class, think about the objects that will be created from that class type. 
+
+Think about: 
+- Things the object knows = instance variables (ex. ingredients)
+- Things the object does = methods (ex. bake() )
+
+
+- A class is a blueprint for an object. It tells the virtual machine how to make an object of that particular type. 
+
+
+Example: 
+
+class Dog {
+	int size;             // instance variables
+	String breed;
+	String name;
+
+
+	void bark() {                           // method
+		System.out.println("Hi there!");
+	}
+}
+
+
+class DogTestDrive {
+	public static void main (String[] args) {
+		Dog d = new Dog();                        // new Dog object
+		d.size = 40;
+		d.bark();
+	}
+}
+
+
+--------THE HEAP--------
+
+- Each time an object is created in Java, it goes into an area of the memory known as THE HEAP. 
+
+- All objects live on the heap. 
+

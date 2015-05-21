@@ -1,0 +1,54 @@
+Ch 3 PRIMITIVES & REFERENCES: NOTES
+
+- Java cares about types and names for the variables (ex. int count; = "int" is the type, "count" is the name).
+
+- A variable is just a cup (a container). It holds something. 
+
+- Each cup holds a value (known as Primitives)
+byte = 8
+short = 16
+int = 32
+long = 64
+float = 32       // used for numbers
+double = 64      // used for numbers
+
+char  (ex. char initial = "a";)           // holds characters
+boolean  (ex. boolean isAwesome; isAwesome = true;)          // true/false 
+
+
+- An object reference variable holds bits that represent a way to access an object. It doesn't hold the object itself, it holds something, like a pointer.
+Example: Dog d = new Dog();   d.bark();       // "Dog d" = reference variable, "new Dog()" is the new object.
+
+
+
+-------ARRAYS--------
+
+- An array is like a tray of cups. 
+- Arrays are objects too. 
+
+
+Example #1: 
+int[] = nums; 
+nums = new int[7];
+nums[0] = 6; 
+nums[1] = 9;
+nums[2] = 30; 
+etc...
+
+Example #2: 
+Dog[] pets;
+pets = new Dog[7];
+pets[0] = new Dog();
+pets[1] = new Dog();
+
+Dog cupcake = new Dog();         // reference variable
+cupcake.name = "Cupcake";
+
+cupcake.bark(); 
+cupcake.chaseCat(); 
+
+
+
+
+
+
