@@ -1,0 +1,33 @@
+GETTER & SETTER Example: 
+
+class ElectricGuitar {
+	string brand;
+	int numOfPickups;
+	boolean rockStarUseIt;
+
+	String getBrand() {
+		return brand;
+	}
+
+	void setBrand(String aBrand) {
+		brand = aBrand;
+	}
+
+	int getNumOfPickups() {
+		return numOfPickups;
+	}
+
+	void setNumOfPickups(int num) {
+		numOfPickups = num;
+	}
+
+	boolean getRockStarUseIt() {
+		return rockStarUseIt;
+	}
+
+	void setRockStarUseIt() {
+		rockStarUseIt = yesOrNo;
+	}
+
+}
+

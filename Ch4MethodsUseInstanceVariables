@@ -1,0 +1,128 @@
+Ch 4 METHODS USE INSTANCE VARIABLES: NOTES
+
+- State affects behaviors. Behaviors affect state. 
+
+Example: 
+
+void play() {
+	soundPlayer.playSound(title);
+}
+
+Song t2 = new Song();
+t2.setArtist("Taylor Swift");
+t2.setTitle("Bad Blood");
+
+Song s3 = new Song();
+s3.setArtist("Lady Gaga");
+s3.setTitle("Poker Face");
+
+
+-------METHODS, ARGUMENTS, PARAMETERS--------
+
+- You can pass values into methods. 
+
+Example: d.bark(3);     // "3" is the argument
+
+
+- A method uses parameters. A caller passes arguments. 
+
+- Arguments are the things you pass into the methods.
+
+- A parameter is nothing more than a local variable. 
+
+- If a method takes a parameter, you must pass it something. 
+
+Example: 
+Dog d = new Dog(); 
+d.bark(3);
+
+void bark(int numOfBarks) {           // "numOfBarks" is the parameter
+	while (numOfBarks > 0) {
+		System.out.println("Ruff!");
+		numOfBarks = numOfBarks - 1;
+	}
+}
+  
+
+-------METHODS-------
+
+- Methods can return values. Every method is declared with a return type.
+
+Example: 
+int theSecret = life.giveSecret();
+int giveSecret() {
+	return 32;
+}
+
+
+- Methods can have multiple parameters (separate them with commas).
+
+Example: 
+void go() {
+	TestStuff t = new TestStuff() {
+		t.takeStuff(12, 35);
+	}
+}
+
+// The arguments you pass land in the same order you passed them.
+
+Example: 
+void takeTwo(int x, int y) {
+	int z = x + y: 
+	System.out.println("Total is " + z);
+}
+
+
+- You can pass variables into a method, as long as the variables type matches the parameter type. 
+
+void go() {
+	int foo = 7;
+	int bar = 3;
+	t.takeTwo(foo, bar);
+}
+
+void takeTwo(int x, int y) {               // "foo, bar" lands in "int x, int y"
+	int z = x + y;
+	System.out.println("Total is " + z);
+}
+
+
+- Java is 'pass-by-value' (aka 'pass-by-copy').
+
+
+
+--------GETTERS & SETTERS (aka Accessors & Mutators)--------
+
+- Getter = send back as a return value, the value of whatever that Getter is supposed to get. 
+
+- Setter = lives for the chance to take an argument value and use it to set the value of an instance variable.
+
+Example: 
+Dog[] pets;
+pets = new Dog[7];
+
+pets[0] = new Dog();
+pets[1] = new Dog();
+
+pets[0].setSize[30];
+int x = pets[0].getSize();
+pets[1].setSize(8);
+
+
+
+--------ENCAPSULATION---------
+
+- We need to build setter methods for all the instance variables, and find a way to force other codes to call the setters rather than access the data directly. 
+
+
+- Hide the data by using 'public' and 'private' access modifiers. 
+
+- Encapsulation rule of thumb: mark instance variables 'private' and provide getters/setters for access control ('public').
+
+
+
+-------DECLARING & INITIALIZING INSTANCE VARIABLES---------
+
+- Instance variables always get a default value.
+Example: integers = 0, floating points = 0.0, booleans = false, references = null
+
