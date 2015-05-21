@@ -34,3 +34,9 @@ class DogTestDrive {
 }
 
 
+--------THE HEAP--------
+
+- Each time an object is created in Java, it goes into an area of the memory known as THE HEAP. 
+
+- All objects live on the heap. 
+
