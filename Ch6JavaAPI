@@ -47,7 +47,68 @@ boolean empty = myList.isEmpty();
 myList.remove(s);
 
 
--------Arrays VS. ArrayList--------
+-------Arrays vs. ArrayList--------
 
 - ArrayList in Java 5.0 are parameterized.
+
+
+-------Short Circuit Operators-------
+
+&& 
+if (price >= 300 && price < 400) {
+	camera = "x";
+}
+
+
+||
+if (brand.equals("A") || brand.equals("B")) {
+	// do things for only brand A or brand B
+}
+
+
+
+-------Non-Short Circuit Operators-------
+
+!=
+if (model != 2000) {
+	// do non-model 2000 stuff
+}
+
+
+! 
+if (!brand.equals("X")) {
+	// do non-brand X stuff
+}
+
+
+
+-------Packages-------
+
+- In the Java API, classes are grouped into packages. 
+
+- To use a class in the APi, you have to know which package the class is in. 
+
+Examples: 
+- ArrayList is in 'java.util' package
+- System.out.ln and Math.random() are in 'java.lang'
+
+- You have to know the full name of the class you want to use. (Ex. java.util.ArrayList)
+
+
+- You have to tell Java which ArrayList you want to use. 
+
+Example using IMPORT...
+import hava.util.ArrayList;)
+
+Example using TYPE...
+When declaring or instantiating: 
+java.util.ArrayList<Dog> list = new java.util.ArrayList<Dog>();
+
+When using it as an argument type:
+public void go(java.util.ArrayList<Dog> list) { }
+
+When using it as a return type:
+public java.util.ArrayList<Dog> foo() {...}
+
+
 
