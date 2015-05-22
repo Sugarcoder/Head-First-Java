@@ -1,0 +1,53 @@
+CH 6 JAVA API: NOTES
+
+-------ArrayList (A class in the Java Library)--------
+
+- add(Object elem)
+
+- remove(int index)
+
+- remove(Object elem)
+
+- contains(Object elem)
+
+- isEmpty()
+
+- IndexOf(Object elem)
+
+- size()
+
+- get(int index) 
+
+
+Examples: 
+
+ArrayList<Egg> myList = new ArrayList<Egg>();
+
+Egg s = new Egg();
+
+myList.add(s);
+
+Egg b = new Egg();
+
+myList.add(b);
+
+// Find out how many things are in it
+int theSize = myList.size();
+
+// Find out if it contains something
+boolean isIn = myList.contains(s);
+
+// Find out where something is located (ie. its index)
+int ind = myList.indexOf(b);
+
+// Find out if its empty
+boolean empty = myList.isEmpty();
+
+// Remove something from it
+myList.remove(s);
+
+
+-------Arrays VS. ArrayList--------
+
+- ArrayList in Java 5.0 are parameterized.
+
