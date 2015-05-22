@@ -1,2 +1,84 @@
 CH 5 WRITING A PROGRAM
 
+- Pseudocode = half-way between real code and plain English description of the class. 
+
+- Most prepcodes include 3 parts: instance variable declarations, method declarations, and method logic (most important, because it defines what has to happen).
+
+
+--------Converting a String to an Int (get the int value of a String)---------
+
+- Integer.ParseInt("3");    
+// "3" takes a String, ParseInt is a method in the Integer class that knows how to "parse".
+
+
+-------FOR LOOP--------
+
+for (int cell : locationCells) { }
+The colon : means 'in'. For each int value in locationCells
+
+- Post-increment operator
+numOfHits++;      // ++ means add 1 to whatever is there
+
+- Break statement
+break;           // Gets you out of a loop.
+
+
+- Choose 'For' loops over 'while' loops when you know how many times you want to repeat the loop code. 
+
+
+--------Regular 'for' loops (non-enhanced)---------
+
+for(int i = 0; i < 100; i++);
+
+// int i = 0; = initialization
+// i < 100; = boolean test
+// i++; = iteration expression
+
+
+Difference between 'for' and 'while': 
+- 'while' loop has only the boolean test. It doesn't have a built-in initialization or iteration expression. 
+- 'while' loop is good when you don't know how many times to loop, and just want to keep going while some condition is true. 
+
+Example: 
+int i = 0; 
+while (i < 100) {
+	i++;
+}
+
+
+---------'For' loop (Enhanced)---------
+
+Example: 
+for (String name : nameArray) { // code to repeat goes here}
+
+// String = the elements here in the array must be compatible with the declared variable type. 
+// name = with each iteration, a different element in the array will be assigned to the variable "name".
+// color: = means IN (name IN nameArray)
+// nameArray = The collection of elements that you want to iterate over.
+
+
+--------Explanations--------
+
+- int randomNum = (int) (Math.random() * 5);
+
+// randomNum = an int variable to hold the random number we get back.
+// (int) = This is a 'cast' and it forces the thing immediately after it to become the type of the cast. 
+// Math.random = A class that comes with Java (random is the method that comes with the Math class).
+
+
+.getUserInput("enter a number");
+// A method of the GameHelper class that asks the user for command.
+
+
+--------CASTING PRIMITIVES---------
+
+- To force the compiler to jam the value of a bigger primitive variable into a smaller one, use the 'cast' operator.
+
+Examples: 
+
+long y = 30;
+int x = (int) y;    // (int) is the 'cast'
+
+float f = 3.14f; 
+int x = (int) f;
+
