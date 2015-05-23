@@ -1,0 +1,73 @@
+CH 7 INHERITANCE & POLYMORPHISM: NOTES
+
+---------Inheritance----------
+
+- XYZ "extends" ABC (extend is used to signify inheritance)
+
+
+- Inheritance is like having one main object with its methods, and creating several other empty objects 'inherit' from the main object (instance variables and methods). 
+
+- The main object is called the "superclass", and the other objects are called "subclasses".
+
+- If you want to create a new object with the same instance variables and using the same methods, but have different codes inside the method, you can "override" it.
+
+- Override = a subclass redefines one of its inherited methods when it needs to change or extend the behavior of that method. 
+
+Example: 
+
+public class Doctor {
+	boolean worksAtHospital;
+	void treatPatient() {
+		// performs a checkup
+	}
+}
+
+public class FamilyDoctor extends Doctor {
+	boolean makesHouseCalls;
+	void giveAdvice() {
+		// gives homespun advice
+	}
+}
+
+public class Surgeon extends Doctor {
+	void treatPatient() {
+		// performs surgery
+	}
+
+	void make Incision() {
+		// make incision
+	}
+}
+
+
+- When you create an object and assign it to a variable, you can use the dot operator on that reference variable to invoke all of the methods.
+
+Example (Wolf object):
+
+Wolf w = new Wolf();
+w.makeNoise();
+w.roam();
+w.eat();
+w.sleep();
+
+
+- When you call a method on an object reference, you're calling the most specific version of the method for that object type. 
+
+- When you want to know if one thing should 'extend' another, apply the "IS-A" test. 
+
+Examples: 
+
+Cat IS-A Feline (This works)
+
+Tub IS-A Bathroom (This is False! They are related, but not through inheritance - This is more like a HAS-A relationship. HAS-A is a reference).
+
+- IS-A should work anywhere in the Inheritance tree. If your inheritance tree is well-designed, the IS-A test should make sense.
+
+
+
+
+
+
+
+
+
