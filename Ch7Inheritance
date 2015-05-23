@@ -40,6 +40,9 @@ public class Surgeon extends Doctor {
 }
 
 
+- Instance variables cannot be overridden. 
+
+
 - When you create an object and assign it to a variable, you can use the dot operator on that reference variable to invoke all of the methods.
 
 Example (Wolf object):
@@ -63,6 +66,14 @@ Tub IS-A Bathroom (This is False! They are related, but not through inheritance 
 
 - IS-A should work anywhere in the Inheritance tree. If your inheritance tree is well-designed, the IS-A test should make sense.
 
+- By using inheritance, you can get rid of duplicate code by abstracting out the behavior common to a group of classes,  and sticking that code in a superclass.
+
+
+----------Access Levels----------
+
+- private, default, protected, public
+
+- Public members are inherited. Private members are not. 
 
 
 
