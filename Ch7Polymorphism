@@ -1,0 +1,98 @@
+CH 7 POLYMORPHISM: NOTES
+
+The 3 steps of object declaration and assignment
+1. Declare a reference: Dog myDog 
+2. Create an object: new Dog();
+3. Link the object and reference: Dog myDog = new Dog();
+
+- With polymorphism, the reference and object can be different. 
+
+Example: Animal myDog = new Dog();
+
+- With polymorphism, the reference type can be a superclass of the actual object type. 
+
+Example: 
+
+Animal [] animals = new Animal[5];
+animals [0] = new Dog(); 
+animals [1] = new Cat(); 
+animals [2] = new Wolf(); 
+animals [3] = new Hippo();
+animals [4] = new Lion();
+
+for (int i = 0; i < animals.length; i++;) {
+	animals[i].eat();
+	animals[i].roam(); 
+}
+
+
+- With polymorphism, you can have polymorphic arguments and return types. 
+
+Example: 
+
+class Vet {
+	public void giveShot(Animal a) {
+		// give the shot
+	a.makeNoise();
+	}
+}
+
+- The method can take any Animal you give it, as long as the object you pass as the argument is a subclass of Animal.
+
+Example: 
+
+class petOwner {
+	public void Start() {
+		Vet v = new Vet();
+		Dog d = new Dog();
+		Hippo h = new Hippo();
+		v.giveShot(d);       // Dog's makeNoise() runs
+		v.giveShot(h);       // Hippo's makeNoise() runs
+	}
+}
+
+
+- With polymorphism, you can write code that doesn't have to change when you introduce new subclass types into the program. 
+
+
+-------Overriding Rules---------
+
+- Arguments must be the same, and the types must be compatible. Whenever the superclass takes an argument, the subclass (overriding the method) must use the same argument.
+
+- The accessor levels cannot be less accessible (from public to private).
+
+
+--------OVERLOADING A METHOD----------
+
+- Method overloading = having two methods with the same name, but different argument lists. 
+
+- The return types can be different. 
+
+- You can't change ONLY the return type. If only the return type is different, its not a valid overload (compiler will think you are overriding instead).
+
+- To overload a method, you MUST change the argument list.
+
+
+Example: 
+
+public class Overloads {
+	String unique ID; 
+
+	public int addNums(int a, int b) {
+		return a + b;
+	}
+
+	public double addNums(double a, double b) {
+		return a + b;
+	}
+
+	public void setUniqueID(String theID) {
+		// validation codes...
+		uniqueID = theID;
+	}
+
+	public void setUniqueID(int ssNumber) {
+		String numString = "" + ssNumber;
+		setUniqueID(numString);
+	}
+}
