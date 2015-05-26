@@ -4,6 +4,189 @@ CH 8 MORE POLYMORPHISM (INTERFACES & ABDSTRACT CLASSES): NOTES
 
 - Interface = 100% abstract class (cannot be instantiated)
 
-- Some classes just shouldn't be instantiated (ex. Animal aAnim = new Animal;)
+- Some classes just shouldn't be instantiated (ex. Animal aAnim = new Animal; )
+
+- If you mark a class with the word "abstract", it will prevent them from instantiating a new object (they cannot use "new _____").
+
+Example:
+abstract class Canine extends Animal {
+	public void roam() { }
+}
+
+public class MakeCanine {
+	public void go() {
+		Canine c;
+		c = new Dog(); 
+		c = new Canine();   // THIS WILL NOT WORK
+		c.roam();
+	}
+}
+
+
+- Concrete class = A class that is not abstract
+
+- Abstract class = The class MUST be extended, overridden.
+
+- Abstract method has no body. They exist soley for polymorphism. (Ex. public abstract void eat(); )
+
+- If you declare an abstract method, the class needs to be marked abstract as well. 
+
+- An abstract class can have both abstract and non-abstract methods.
+
+
+
+----------Java's class 'Object'---------
+
+- Every class in Java extends class 'Object'. 
+
+Some of the methods of class Object: 
+- boolean equals()
+- Class getClass()
+- int hashCode()
+- String toString()
+
+
+Examples: 
+
+1. equals(Object o)
+Dog a = new Dog();
+Cat c = new Cat();
+
+if (a.equals(c)) {
+	System.out.println("true");
+} else {
+	System.out.println("false");
+}
+
+
+2. getClass() 
+Cat c = new Cat();
+System.out.println(c.getClass());
+
+
+3. hashCode()
+Cat c = new Cat(); 
+System.out.println(c.hashCode());
+
+
+4. toString()
+Cat c = new Cat(); 
+System.out.println(c.toString());
+
+
+- Objects come out of an ArrayList<Object> acts like they are generic instances of class Object. (Ex. If an object goes in as a 'Fish', it comes out as an Object)
+
+
+Example: 
+
+THIS DOESN'T WORK...
+
+public void go() {
+	Dog aDog = new Dog(); 
+	Dog sameDog = getObject(aDog);     // This line won't work!
+}
+
+public Object getObject(Object o) {
+	return o;
+}
+
+
+
+THIS WORKS...
+
+public void go() {
+	Dog aDog = new Dog(); 
+	Object sameDog = getObject(aDog);
+}
+public Object getObject(Object o) {
+	return o;
+}
+ 
+
+
+- An object contains everything it inherits from each of its superclasses. 
+
+
+- The object reference can only see the object parts of the main object. But it can only access the methods of class Object. 
+
+
+---------Casting an Object reference back to its real type---------
+
+- If you want to call the specific methods from a certain object, you need a reference declared as that object type. 
+
+Example: 
+
+Object o = al.get(index);
+Dog d = (Dog) o;     // cast the object back to a Dog we know is there
+d.roam();
+
+
+
+---------Multiple Inheritance----------
+
+- Having more than one superclass for classes to inherit from. 
+
+Ex. Dog extends both Animal and Pet, and gets the methods from both.
+
+
+---------Interface----------
+
+- A Java interface solves the multiple inheritance problem by giving much of the polymorphic benefits of multiple inheritance without the pain and suffering from the Deadly Diamond of Death (DDD). 
+
+- DDD = If CDBurner and DVDBurner both inherits from DigitalRecorder, and ComboDrive inherits from CDBurner and DVDBurner, which burn() method should it use?!
+
+
+- The way in which interfaces side-step DDD is to make all the methods abstract!
+
+
+- To DEFINE an interface: 
+
+public interface Pet { ... }
+
+- To IMPLEMENT an interface: 
+
+public class Dog extends Canine implements Pet { ... }
+
+
+
+- Interface methods are implicitly public and abstract (you don't need to type it out).
+
+
+Example: 
+
+public interface Pet {
+	public abstract void beFriendly(); 
+	public abstract void play();    // Interface methods are abstract, so they have no bodies.
+}
+
+public class Dog extends Canine implements Pet {
+	public void beFriendly() { ... }   // You MUST implement the Pet methods here
+	public void play() { ... }
+	public void roam() { ... }
+	public void eat() { ... }
+}
+
+
+- Classes from different inheritance trees can implement the same interface. 
+
+- A Java class can only have one superclass, but you can implement multiple interfaces. 
+
+
+
+--------Class, Subclass, Abstract or Interface?---------
+
+- Make a 'class' that doesn't extend anything and when your new class doesn't pass the IS-A test for any other type.
+
+
+- Make a 'subclass' (extend) only when you need to make a more specific version of a class and need to override or add new behavior.
+
+
+- Use a 'abstract' class when you want to define a template for a group of subclasses, and you have at least some implementation code that all subclasses could use. 
+
+
+Make the class ;abstract; when you want to guarantee that nobody can make objects of that type. 
+
+
+- Use an 'interface' when you want to define a role that other classes can play, regardless of where those classes are in the inheritance tree.
 
 
