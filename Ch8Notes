@@ -1,0 +1,9 @@
+CH 8 MORE POLYMORPHISM (INTERFACES & ABDSTRACT CLASSES): NOTES
+
+---------Interfaces---------
+
+- Interface = 100% abstract class (cannot be instantiated)
+
+- Some classes just shouldn't be instantiated (ex. Animal aAnim = new Animal;)
+
+
