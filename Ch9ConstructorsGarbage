@@ -225,3 +225,70 @@ public class MakeHippo {
 		System.out.println(h.getName());       // Then, call the Hippo's inherited 'getName'
 	}
 }
+
+
+
+- Use 'this()' to call a constructor from another overloaded constructor in the same class. 
+
+- The call to this() can only be used in a constructor, and must be the first statement in a constructor. 
+
+- A constructor can have a call to super() or this() (not both).
+
+- 'this' is a reference to the current object. 
+
+Example: 
+
+class Mini extends Car {
+	Color color; 
+
+	public Mini() {
+		this(Color.Red);      // The no-arg constructor supplies a default Color and call sthe overloaded constructor (the one that calls 'super()')
+	}
+	
+	public Mini(Color c) {
+		super("Mini");       // This is the constructor that does the real work of initializing the object (including the call to super() )
+		color = c;
+		// more initialization
+	}
+}
+
+
+
+--------Object Lifespan---------
+
+- A local variable lives only within the method that declared the variable. 
+
+- An instance variable lives as long as the object does. 
+
+- A local variable is in 'scope' only within the method in which the variable was declared. A local variable is 'alive' as long as its Stack frame is on the Stack (until the method completes).
+
+
+
+--------3 Ways To Get Rid of an Object's Reference------
+
+1. The reference goes out of scope, permanently 
+
+Example: 
+
+void go() {
+		Life z = new Life();       // 'z' dies at the end of the method 
+}
+
+
+2. The reference is assigned another object
+
+Example:
+
+Life z = new Life();
+z = new Life();
+
+
+3. The reference is explicitly set to null
+ 
+Example: 
+
+Life z = new Life(); 
+z = null;
+
+
+
