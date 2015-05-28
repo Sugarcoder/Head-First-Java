@@ -1,0 +1,98 @@
+CH 9 CONSTRUCTORS & GARBAGE COLLECTION: NOTES
+
+- Heap = Where all objects live (Ex. Duck, Snowboard, Button)
+
+- Stack = Where method invocations and local variables live (Ex. go(), doStuff(), main() )
+
+- Instance variables = declared inside a class, but not inside a method. 
+
+Example:
+
+public class Duck {
+	int size;     // instance variable
+}
+
+
+- Local variables = declared inside a method, including method parameters. They live only as long as the method is on the stack (before the closing curly brace).
+
+Example: 
+
+public void foo(int x) {
+	int i = x + 3;          // parameter 'x', i and b are all local variables
+	boolean b = true;
+}
+
+
+- The method at the top of the stack is always the currently-running method for that stack. 
+
+
+- Instance variables live on the Heap, inside the objects they belong to.
+
+
+
+---------3 Steps of Object Declaration & Assignment--------
+
+1. Declare a reference variable (Duck myDuck = ...)
+
+2. Create an object (... = new Duck(); )
+
+3. Assign the object to the reference ( = )
+
+
+
+---------Constructors----------
+
+- A constructor looks and feel a lot like a method, but its not a method. It is the code that runs when you instantiate an object (ex. 'new...')
+
+- Every class you create already has a constructor.
+
+- They key feature of a constructor is that it runs before the object can be assigned to a reference. 
+
+Example: 
+
+public class Duck {
+	public Duck() {
+		System.out.println("Quack!");   // constructor code
+	}
+}
+
+
+- Most people use constructors to initialize the state of an object (to make and assign values to the object's instance variables).
+
+- Constructors cannot have a return type. 
+
+- If a method or constructor has a parameter, you must pass an appropriate argument when you invoke that method or constructor. 
+
+TWO ways to make a new Duck: 
+
+public class Duck2 {
+	int size; 
+
+	public Duck2() {
+		// write a default size
+		size = 27; 
+	}
+
+	public Duck2(int duckSize) {
+		// use duckSize parameter
+		size = duckSize;
+	}
+}
+
+-------
+
+#1. To make a Duck when you know the size: 
+
+Duck2 d = new Duck2(15);
+
+
+#2. To make a Duck when you do not know the size: 
+
+Duck2 dc2 = new Duck2();
+
+
+- The two options to make a Duck needs two constructors: one that takes an int and one that doesn't. 
+
+- If you have more than one constructor in a class, it means you have overloaded constructors. 
+
+
