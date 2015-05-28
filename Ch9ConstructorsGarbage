@@ -93,6 +93,135 @@ Duck2 dc2 = new Duck2();
 
 - The two options to make a Duck needs two constructors: one that takes an int and one that doesn't. 
 
+
 - If you have more than one constructor in a class, it means you have overloaded constructors. 
 
+- If you write a constructor that takes arguments, and you still want a no-arg constructor, you'll have to build the no-arg constructor yourself.  
 
+
+
+- Overloaded constructors = more than one constructor in a class
+
+- If you ahve more than one constructor in a class, the constructors MUST have different argument lists.
+
+Here are 4 different constructors to make a new mushroom:
+
+public class Mushroom {
+	public Mushroom(int size) { }     // when you know the size, but don't know if it's magic
+
+	public Mushroom() { }      // when you don't know anything
+
+	public Mushroom(boolean isMagic) { }      // when you know if its magic, but don't know the size
+
+	public Mushroom(boolean isMagic, int size) { }
+	
+	public Mushroom(int size, boolean isMagic) { }      // when you know the size and magic
+} 
+
+
+
+---------4 Things to Remember About Constructors---------
+
+#1. A constructor is the code that runs when sombody says 'new' on a class type.
+ 
+
+#2. A constructor must have the same name as the class, and no return type.
+
+
+#3. If you don't put a constructor in your class, the compiler puts in a default constructor. The default constructor is always a no-arg constructor. 
+
+Example: public Duck() { }
+
+
+#4. You can have more than one constructor in your class, as long as the argument lists are different. 
+
+Example: 
+public Duck() { }
+public Duck(int size) { }
+public Duck(String name) { }
+public Duck(String name, int size) { }
+
+
+
+---------Object Construction----------
+
+- Making a Hippo means making the Animal and Object parts too.
+
+Example: 
+
+public class Animal {
+	public Animal() {
+		System.out.println("Making a Animal");
+	}
+}
+
+public class Hippo extends Animal {
+	public Hippo() {
+		System.out.println("Making a Hippo");
+	}
+}
+
+public class TestHippo {
+	public static void main(String[] args) {
+	System.out.println("Starting...");
+	Hippo h = new Hippo();
+	}
+}
+
+
+
+--------Super Constructor---------
+
+- The only way to call a super constructor is by caling 'super()'.
+
+Example: 
+
+public class Duck extends Animal {
+	int size;
+
+	public Duck(int newSize) {
+		super(); 
+		size = newSize;
+	}
+}
+
+
+- A call to super() puts the superclass constructor on the top of the Stack. 
+
+- The call to super() must be the first statement in each constructor. 
+
+Example: 
+
+public Boop() {
+	super();
+}
+
+
+Superclass constructor example: 
+
+public abstract class Animal {
+	private String name;  
+
+	public String getName() {        // A getter method that Hippo inherits
+		return name; 
+	}
+
+	public Animal(String theName) {
+		name = theName;      // The constructor that takes the name and assigns it the name instance variable
+	}
+}
+
+
+public class Hippo extends Animal {
+	public Hippo(String name) {      // Hippo constructor takes a name
+		super(name);       // It sends the name up the Stack to the Animal constructor
+	}
+}
+
+
+public class MakeHippo {
+	public static void main(String[] args) {
+		Hippo h = new Hippo("Buffy");        // Make a Hippo, passing the name "Buffy" to the Hippo constructor.
+		System.out.println(h.getName());       // Then, call the Hippo's inherited 'getName'
+	}
+}
