@@ -1,0 +1,153 @@
+CH 10 NUMBERS & STATICS: NOTES
+
+- Methods in the Math class don't use any instance variable values. Because the methods are 'static', you don't need to have an instance of Math. 
+
+Examples: 
+
+int x = Math.round(40.6);
+int y = Math.min(56, 12);
+int z = Math.abs(-343);
+
+
+- The keyword 'static' lets a method run without any instance of the class. 
+
+- Static method = behavior is not dependent on an instance variable, so no instance/object is required. 
+
+
+Another Example: 
+
+public int min(int a, int b) {
+	// returns the lesser of a and b
+}
+
+
+
+- To call a static method using a class name: 
+
+Math.min(88, 86);
+
+
+- To call a non-static method using a reference variable name: 
+
+Song t2 = new Song();
+t2.play();
+
+
+- A class with static methods is not meant to be instantiated.
+
+
+- A method marked 'private' means that only code from within the class can invoke the method. A constructor marked 'private' means the same thing. 
+
+
+- Static methods can't use non-static (instance) variables nor non-static methods
+
+- You can think of a static variable as a variable that lives in a 'class' instead of in an object. 
+
+- Static variables are shared. All instances of the same class share a single copy of the static variables.
+
+- Instance variables: 1 per instance
+
+- Static variables: 1 per class
+
+
+- Static variables in a class are initialized before any object of that class can be created. 
+
+- Static variables in a class are initilized before any static method of the class runs. 
+
+Example: 
+
+class Player {
+	static int playerCount = 0;   // playerCount is initialized when the class is loaded.
+	private String name;
+	public Player(String n) {
+		name = n;
+		playerCount++;
+	}
+}
+
+public class PlayerTestDrive {
+	public static void main(String[] args) {
+		System.out.println(Player.playerCount);
+		Player one = new Player("Alicia Keys");
+		System.out.println(Player.playerCount);   // Access a static variable just like a static method - with a class name.
+	}
+}
+
+
+- Default values for declared but uninitialized static and instance variables are the same:
+- primitive integers (long, short, etc) = 0
+- primitive floating points (float, double) = 0.0
+- boolean = false
+- object references = null
+
+
+
+---------Static Final Constants----------
+
+- Final = Once initialized, it can never change. 
+
+Example: public static final double PI = 3.1415...
+
+Public - anyone can access
+Static - you don't need an instance of class Math
+Final - PI doesn't change
+
+
+- Static final variables are constants, so the name should be all uppercase (underscore to separate the words - ex. FOO_X)
+
+
+- You can use 'final' to modify non-static variables too, including instance variables, local variables, and even method parameters. 
+
+
+- Final variable = you can't change its value
+
+- Final method = you can't override the method
+
+- Final class = you can't extend the class (make a subclass)
+
+
+
+--------Math Methods---------
+
+- Math.random() = Returns a double between 0.0 - 1.0
+
+Examples: 
+double r1 = Math.random();
+int r2 = (int) (Math.random() * 5);
+
+
+- Math.abs() = Returns a double that is the absolute value of the argument. The method is overloaded, so if you pass it an int, it returns an int. 
+
+Examples: 
+int x = Math.abs(-240);    // returns 240 
+double d = Math.abs(240.45);    // returns 240.45
+
+
+- Math.round() = Returns an int or a long 
+
+Examples: 
+int x = Math.round(-24.8f);   // returns -25
+int y = Math.round(24.45f);   // returns 24
+
+
+- Math.min() = Returns a value that is the minimum of the two arguments. The method is overloaded to take ints, longs, floats or doubles.
+
+Examples: 
+int x = Math.min(24.240);     // returns 24
+double y = Math.min(90876.5, 90876.49);   // returns 90876.49
+
+
+- Math.max() = Returns a value that is the maximum of the two arguments. The method is overloaded to take ints, longs, floats or doubles.
+
+Examples: 
+int x = Math.max(24, 240);    // returns 240
+double y = Math.max(90876.5, 90876.49);    // returns 90876.5
+
+
+
+
+
+
+
+
+
