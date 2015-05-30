@@ -145,6 +145,42 @@ double y = Math.max(90876.5, 90876.49);    // returns 90876.5
 
 
 
+Converting a String to a primitive value:
+
+String s = "2";
+int x = Integer.parseInt(s);
+double d = Double.parseDouble("420.24");
+boolean b = new Boolean("true").booleanValue();
+
+
+
+Turning a primitive number into a String: 
+
+double d = 42.5;
+String doubleString = "" + d;
+
+double d = 42.5;
+String doubleString = Double.toString(d);
+
+
+
+--------Formatting--------
+
+format("I have  %.2f bugs to fix.", 476578.09876);
+
+% = tells the formatter to insert the other method argument to format
+
+format("I have %,.2f bugs to fix.", 476578.09876);
+
+, = separates big numbers (ex. 476,578.10)
+
+
+%,d = insert comma and format the number as a decimal integer
+
+%.2f = format the number as a floating point with a precision of two decimal places
+
+%,.2f = insert commas and format the number as a floating point with a precision of two decimal places
+
 
 
 
