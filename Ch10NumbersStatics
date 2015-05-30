@@ -184,6 +184,37 @@ format("I have %,.2f bugs to fix.", 476578.09876);
 
 
 
+--------Calendar--------
+
+- Use the static 'getInstance()' method for Calendar.
+
+Calendar c = Calendar.getInstance();
+
+c.set(2005.0,7,15,40);    // Set the time to Jan. 7, 2005 at 15:40
+
+
+
+Key Calendar methods: 
+
+- add(int field, int amount)
+
+- get(int field)
+
+- getInstance()
+
+- getTimeInMillis()
+
+- roll(int field, boolean up)
+
+- set(int field, int value)
+
+- set(year, month, day, hour, minute) (all ints)
+
+- setTimeInMillis(long millis)
+
+
+
+
 
 
 
