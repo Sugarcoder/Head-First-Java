@@ -12,7 +12,8 @@ public class MusicTest1 {
 		try {
 			Sequencer sequencer = MidiSystem.getSequencer();
 			System.out.println("Successfully got a sequencer.");
-		} catch(MidiUnavailableException ex) {
+
+		} catch (MidiUnavailableException ex) {
 			System.out.println("Bummer");
 		}
 	}
@@ -36,6 +37,13 @@ public class MusicTest1 {
 
 Example: 
 
+public void takeRisk() throws BadException {
+		if (abandonAllHope) {
+			throw new BadException(); 
+		}
+}
+
+
 public void crossFingers() {
 	try {
 		anObject.takeRisk();
@@ -45,11 +53,89 @@ public void crossFingers() {
 	}
 }
 
-public void takeRisk() throws BadException {
-		if (abandonAllHope) {
-			throw new BadException(); 
-		}
+
+- The compiler does not pay attention to RuntimeException. A RuntimeException does not have to be declared or wrapped in a try/catch. 
+
+
+
+-----------'Finally' block-----------
+
+- A 'finally' block is where you put code that must run regardless of an exception.
+
+Example: 
+
+try {
+	turnOvenOn();
+	x.bake();
+} catch (BakingException ex) {
+	ex.printStackTrace();
+} finally {
+	turnOvenOff();
 }
 
+
+- Without 'finally', you have to put turnOvenOff() in both the try and the catch, because you ahve to turn off the oven no matter what. 
+
+
+- A method can throw multiple exceptions. 
+
+Example: 
+
+public class Laundry {
+	public void doLaundry() throws PantsException, LingerieExcepton {
+		// code that could throw either exception
+	}
+}
+
+public class Foo {
+	public void go() {
+		Laundry laundry = new Laundry();
+
+		try {
+			laundry.doLaundry();
+		} catch (PantsException pex) {
+			// recovery code
+		} catch (LingerieException lex) {
+			// recovery code
+		}
+	}
+}
+
+
+
+---------Supertype Exceptions-----------
+
+- You can declare exceptions using a supertype of the exceptions you throw. 
+
+Example: 
+
+public void doLaundry() throws ClothingException {    // ClothingException lets you throw any subclass (like PantsException, LingerieException, etc)
+	
+}
+
+
+- You can catch exceptions using a supertype of the exception thrown. 
+
+Example: 
+
+try {
+	laundry.doLaundry();
+} catch (ClothingException cex) {
+	// recovery code
+}
+
+
+- Multiple catch blocks myst be ordered from smallest to biggest. 
+
+
+-----------Exception Rules-----------
+
+- You cannot have a 'catch' or 'finally' without a 'try'.
+
+- You cannot put code between 'try' and 'catch'.
+
+- A 'try' must be followed by either a 'catch' or 'finally'.
+
+- A 'try' with only a 'finally' must still declare the exception. 
 
 
