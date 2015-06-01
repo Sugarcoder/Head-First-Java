@@ -1,2 +1,27 @@
 CH 11 EXCEPTIONS
 
+- A 'try/catch' block tells the compiler that you know an exceptional thing could happen in the method you're calling, and that you're prepared to handle it.
+
+Example: 
+
+import javax.sound.midi*;
+
+public class MusicTest1 {
+	public void play() {
+
+		try {
+			Sequencer sequencer = MidiSystem.getSequencer();
+			System.out.println("Successfully got a sequencer.");
+		} catch(MidiUnavailableException ex) {
+			System.out.println("Bummer");
+		}
+	}
+
+	public static void main(String [] args) {
+		MusicTest1 mt = new MusicTest();
+		mt.play();
+	}
+}
+
+
+
