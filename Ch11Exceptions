@@ -24,4 +24,32 @@ public class MusicTest1 {
 }
 
 
+- An exception is an object of type Exception.
+
+- Because an Exception is an object, what you 'catch' is an object. 
+
+
+- One method will catch what another method throws. An exception is always thrown back to the caller. 
+
+- The method that throws has to declare that it might throw the exception. 
+
+
+Example: 
+
+public void crossFingers() {
+	try {
+		anObject.takeRisk();
+	} catch (BadException ex) {
+		System.out.println("Arrgh!");
+		ex.printStackTrace();
+	}
+}
+
+public void takeRisk() throws BadException {
+		if (abandonAllHope) {
+			throw new BadException(); 
+		}
+}
+
+
 
