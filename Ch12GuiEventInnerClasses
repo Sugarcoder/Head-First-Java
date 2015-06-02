@@ -1,0 +1,69 @@
+CH 12 GUI, EVENT HANDLING, INNER CLASSES: NOTES
+
+- A listener interface is the bridge between the 'listener'(you) and the 'event source'(the button).
+
+- Event source (like a button) = creates an event object when the user does something that matters (like click the button).
+
+
+Example: 
+
+If you implement MouseListener, you can get events for mousePressed, mouseReleased, mouseMoved, etc.
+
+If you implement MouseListener, the mousePressed() method is called when the user presseds the mouse. When the user lets go, the mouseReleased() method is called. 
+
+
+import javax.swing.*;
+
+import java.awt.event.*;
+
+public class SimpleGui1B implements ActionListener {
+	JButton button;
+
+	public static void main(String [] args) {
+		SimpleGui1B gui = new SimpleGui1B();
+		gui.go();
+	}
+
+	public void go() {
+		JFrame frame = new JFrame();
+		button = new JButton("Clicke me");
+
+		button.addActionListener(this);       // Register your interest with the button (The argument you pass MUST be an object from a class that implements ActionListener)
+
+
+		frame.getContentPane().add(button);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(300,300);
+		frame.setVisible(true);
+	}
+
+
+	public void actionPerformed(ActionEvent event) {        // Implement the ActionListener interface's actionPerformed() method. This is the actual event-handling method!
+
+		button.setText("I've been clicked!");
+
+	}
+}
+
+
+
+- Listener (gets the event) = As the listener, my job is to 'implement' the interface, register with the button, and provide the event-handling. 
+
+
+- Event source (sends the event) = As an event source, my job is to accept registrations (from listeners), get events from the user, and call the listener's event-handling method (when the user clicks me).
+
+
+- Event object (holds data about the event) = As an event object, I'm the 'argument' to the event call-back method (from the interface) and my job is to carry data about the event back to the listener.  
+
+
+
+-----------Inner Classes-------------
+
+- An inner class can use all the methods and variables of the outer class, even the private ones. 
+
+- The inner class gets to use those variables and methods just as if the methods and variables were declared within the inner class. 
+
+- An inner class instance must be tied to an outer class instance. 
+
+
+
