@@ -66,4 +66,79 @@ public class SimpleGui1B implements ActionListener {
 - An inner class instance must be tied to an outer class instance. 
 
 
+- If you instantiate an inner class from code within an outer class, the instance of the outer class is the one that the inner object will 'bond' with.
+
+Example: 
+
+class MyOuter {
+	private int x;       // The outer class has a instance variable 'x'
+
+	MyInner inner = new MyInner();   // Make an instance of the inner class
+
+	public void doStuff() {
+		inner.go();        // Call a method on the inner class
+	}
+
+
+	class MyInner {
+		void go() {
+			x = 42;      // The method in the inner class was the outer class instance variable 'x', as if 'x' belonged to the inner class. 
+		}
+	}  
+}
+
+
+
+----------Getting the two-button code to work (using Inner Classes)----------
+
+public class TwoButtons {
+	JFrame frame;
+	JLabel label;
+
+	public static void main (String[] args) {
+		TwoButtons gui = new TwoButtons ();
+		gui.go();
+	}
+
+	public void go() {
+		frame = new JFrame();
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		JButton labelButton = new JButton("Change label");
+		labelButton.addActionListener(new LabelListener());      // Instead of passing (this) to the button's listener registration method, pass a new instance of the appropriate listener class.
+
+		JButton colorButton = new JButton("Change Circle");
+		colorButton.addActionListener(new ColorListner());
+
+		label = new JLabel("I'm a label");
+		MyDrawPanel drawPanel = new MyDrawPanel();
+
+
+		frame.getContentPane().add(BorderLayout.SOUTH, colorButton);
+		frame.getContentPane().add(BorderLayout.CENTER, drawPanel);
+		frame.getContentPane().add(BorderLayout.EAST, labelButton);
+		frame.getContentPane().add(BorderLayout.WEST, label);
+
+		frame.setSize(300,300);
+		frame.setVisible(true);
+
+	}
+
+
+	// Now, we get to have two ActionListeners in a single class!
+
+
+	class LabelListener implements ActionListener {
+		public void actionPerformed(ActionEvent event) {
+			label.setText("Ouch!");
+		}
+	}
+
+	class ColorListener implements ActionListener {
+		public void actionPerformed(ActionEvent event) {
+			frame.repaint();
+		}
+	}
+}
+
 
