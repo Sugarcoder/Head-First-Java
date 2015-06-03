@@ -1,4 +1,4 @@
-CH 11 EXCEPTIONS
+CH 11 EXCEPTIONS: NOTES
 
 - A 'try/catch' block tells the compiler that you know an exceptional thing could happen in the method you're calling, and that you're prepared to handle it.
 
