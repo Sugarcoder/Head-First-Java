@@ -1,0 +1,56 @@
+CH 14 SAVING OBJECTS, SERIALIZATION, I/O; NOTES
+
+- Objects have state and behavior. 
+
+- Behavior lives in the class, but state lives within each individual object. 
+
+- If your data will be used by only the Java program that generated it: use serialization (flattens and re-inflates objects - Ex. saving characters in a game).
+
+- If your data will be used by other programs: write a plain text file (separate the states with commas).
+
+
+Example: Writing a serialized object to a file
+
+1. Make a FileOutputStream        // Object is written as bytes into a connection stream
+
+FileOutputStream fileStream = new FileOutputStream("MyGame.ser");
+
+2. Make an ObjectOutputStream     // Object is flattened into a chain stream
+
+ObjectOutputStream os = new ObjectOutputStream(fileStream);
+
+3. Write the object
+
+os.writeObject(characterOne);
+os.writeObject(characterTwo);
+os.writeObject(characterThree);
+
+4. Close the ObjectOutputStream
+
+os.close();
+
+
+
+- Connection streams represent a connection to a source or destination(file, socket, etc) while chain streams can't connect on their own and must be chained to a connection stream. 
+
+
+- Objects on the heap have state - the value of the object's instance variables. These values make one instance of a class different from antoher instance of the same class.
+
+- Serialized objects save the value of the instance variables, so that an identical instance (object) can be brought back to life on the heap.
+
+
+Example: 
+
+Foo myFoo = new Foo();
+myFoo.setWidth(37);
+myFoo.setHeight(70);
+
+FileOutputStream fs = new FileOutputStream("foo.ser");
+ObjectOutputStream os = new ObjectOutputStream(fs);
+os.writeObject(myFoo);
+
+
+
+
+
+
