@@ -11,19 +11,22 @@ CH 14 SAVING OBJECTS, SERIALIZATION, I/O; NOTES
 
 Example: Writing a serialized object to a file
 
-1. Make a FileOutputStream        // Object is written as bytes into a connection stream
+1. Make a FileOutputStream        // Object is written as bytes (connection stream)
 
 FileOutputStream fileStream = new FileOutputStream("MyGame.ser");
 
-2. Make an ObjectOutputStream     // Object is flattened into a chain stream
+
+2. Make an ObjectOutputStream     // Object is flattened (chain stream)
 
 ObjectOutputStream os = new ObjectOutputStream(fileStream);
+
 
 3. Write the object
 
 os.writeObject(characterOne);
 os.writeObject(characterTwo);
 os.writeObject(characterThree);
+
 
 4. Close the ObjectOutputStream
 
@@ -48,6 +51,72 @@ myFoo.setHeight(70);
 FileOutputStream fs = new FileOutputStream("foo.ser");
 ObjectOutputStream os = new ObjectOutputStream(fs);
 os.writeObject(myFoo);
+
+
+
+-------Class State---------
+
+- If you want your class to be serializable, implement Serializable.
+
+- If any superclass of a class is serializable, the subclass is automaticaly serializable even if the subclass doesn't explicitly declare 'implements serializable'.
+
+Example: 
+
+objectOutputStream.writeObject(myBox);    // Whatever goes in 'myBox' must implement serializable or it will fail at runtime.
+
+
+
+--------Transient (shouldn't be saved)--------
+
+- Make an instance variable as 'transient' if it can't (or shouldn't) be saved.
+
+Example: 
+
+import java.net.*;
+
+class Chat implements Serializable {
+	transient String current ID;        // doesn't save the variable; it gets skipped.
+
+	String userName; 
+
+	// more code
+}
+
+
+
+---------Deserialization----------
+
+Deserialization = restoring an object back to its original state.
+
+1. Make a FileInputStream        // Object is read as bytes (connection stream)
+
+FileInputStream fileStream = new FileInputStream("MyGame.ser");
+
+
+2. Make an ObjectInputStream           // class is found and loaded, saved instance variables reassigned (chain stream)
+
+ObjectInputStream os = new ObjectInputStream(fileStream);
+
+
+3. Read the objects
+
+Object one = os.readObject();
+Object two = os.readObject();
+Object three = os.readObject(); 
+
+
+4. Cast the objects
+
+GameCharacter elf = (GameCharacter) one;
+GameCharacter troll = (GameCharacter) two;
+GameCharacter magician = (GameCharacter) three;
+
+
+4. Close the ObjectInputStream
+
+os.close();
+
+
 
 
 
