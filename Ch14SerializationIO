@@ -60,6 +60,7 @@ os.writeObject(myFoo);
 
 - If any superclass of a class is serializable, the subclass is automaticaly serializable even if the subclass doesn't explicitly declare 'implements serializable'.
 
+
 Example: 
 
 objectOutputStream.writeObject(myBox);    // Whatever goes in 'myBox' must implement serializable or it will fail at runtime.
@@ -115,6 +116,33 @@ GameCharacter magician = (GameCharacter) three;
 4. Close the ObjectInputStream
 
 os.close();
+
+
+
+--------Writing a String to a Text File---------
+
+To write a serialized object: 
+objectOutputStream.writeObject(someObject);
+
+To write a String:
+fileWriter.write("My first String to save");
+
+
+Example: 
+
+import java.io.*;
+
+class WriteAFile {
+	public static void main (String[] args) {
+		try {
+			FileWriter writer = new FileWriter("Foo.txt");
+			writer.write("Hello, foo!");
+			writer.close();
+		} catch (IOException ex) {
+			ex.printStackTrace();
+		}
+	}
+}
 
 
 

@@ -1,5 +1,13 @@
 import java.io.*;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+
+
 public class GameSaverTest {
 	public static void main(String[] args) {
 		GameCharacter one = newGameCharacter(50, "Elf", new String[]  {"bow", "sword", "dust"};
@@ -50,6 +58,9 @@ public class GameSaverTest {
 
 
 import.java.io.*;
+
+import java.io.Serializable;
+
 
 public class GameCharacter implements Serializable {
 	int power;
