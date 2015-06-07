@@ -198,7 +198,41 @@ if (dir.isDirectory) {
  writer.flush();
 
 
- 
+
+ --------Split()---------
+
+- Split() = seperates the string into pieces
+
+Example: 
+
+String toTest = "What is blue + yellow?/green";
+
+String() result = toTest.split("/");
+
+for (String token:result) {
+	System.out.println(token);
+}
+
+
+
+-------Serialized Objects Evolving--------
+
+- When you think your class might evolve after someone has serialized objects from it...
+
+1. Use the serialver command-line tool to get the version ID for your class
+
+2. Paste the output into your class
+
+Ex: static final long serialVersionUID = 12345L;
+
+3. Be sure that when you make changes to the class, you take responsibility for the consequences. Make sure that your new class can deal with an old class deserialized with default values.
+
+
+
+
+- An array object is serializable, as long as the things in the array are serializable. 
+
+
 
 
 

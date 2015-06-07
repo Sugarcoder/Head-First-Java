@@ -1,0 +1,29 @@
+Restoring A Pattern
+
+public class MyReadInListener implements ActionListener {
+	
+	public void actionPerformed(ActionEvent a) {
+		boolean[] checkboxState = null;
+
+		try {
+			FileInputStream fileIn = new FileInputStream("Checkbox.ser");
+			ObjectInputStream os = new ObjectInputStream(fileIn);
+			checkboxState = (boolean[]) is.readObject();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
+
+		for (int i = 0; i < 256; i++) {
+			JCheckbox check = (JCheckbox) checkboxList.get[i];
+			if (checkboxState[i]) {
+				check.setSelected(true);
+			} else {
+				check.setSelected(false);
+			}
+		}
+
+		sequencer.stop();
+		buildTraceAndStart();
+		
+	}
+}
