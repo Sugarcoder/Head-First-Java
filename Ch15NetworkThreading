@@ -116,4 +116,152 @@ Socket sock = serverSock.accept();
 
 
 
+----------Multithreading-----------
+
+- Thread = A separate thread of execution, with a separate call stack. 
+
+- Java has multiple threading built right into the fabric of the language. 
+
+- By creating a new Thread object, you've launched a seperate thread of execution, with its very own call stack. 
+
+- Each time you want to start up a new thread of execution, you create an instance of class Thread.
+
+
+How to make a new thread of execution: 
+
+Thread t = new Thread();
+t.start();
+
+
+- Multiple threading = have to look at both the thread and the job that is run by the thread, and look at the 'Thread' class in the java.lang package.
+
+
+- Java has multiple threads, but only one Thread class.
+
+
+- With more than one call stack, you get the appearance of having multiple things happen at the same time. 
+
+
+
+- thread (lower-case 't') = separate call stack
+
+- Thread (upper-case 'T') = a class that represents a thread of execution.
+
+
+
+Example of how a thread is run: 
+
+1. The JVM calls the main() method. 
+
+public static void main(String[] args) {
+	.....
+}
+
+
+2. main() starts a new thread. The main thread is temporarily frozen while the new thread starts running.
+
+Runnable r = new MyThreadJob();
+Thread t = new Thread(r);
+t.start();
+Dog d = new Dog();
+
+
+3. The JVM switches between the new thread (user thread A) and the original main thread, until both threads complete. 
+
+
+
+--------How to Launch A New Thread---------
+
+1. Make a Runnable object (the thread's job)
+
+Runnable threadJob = new MyRunnable();
+
+
+2. Make a Thread object (the worker) and give it a Runnable (the job)
+
+Thread myThread = new Thread(threadJob);
+
+
+3. Start the thread 
+
+myThread.start();
+
+
+
+- A Runnable is the job a thread is supposed to run. 
+
+- A Runnable holds the method that goes on the bottom of the new thread's stack: run().
+
+
+- To make a job for your thread, implement the Runnable interface.
+
+public class MyRunnable implements Runnable {
+	
+	public void run() {
+		doMore();
+	}
+
+	public void doMore() {
+		System.out.println("top of the stack");
+	}
+}
+
+
+class ThreadTester {
+	
+	public static void main (String[] args) {
+
+		Runnable threadJob = new MyRunnable();
+		Thread myThread = new Thread(threadJob);
+
+		myThread.start();
+
+		System.out.println("back in main");
+	}
+}
+
+
+
+- sleep() = putting the thread on hold and stop 'running'. 
+
+Ex: 
+
+// put it under 'public void go()'
+
+try {
+	Thread.sleep(2000);
+} catch (InterruptedException ex) {
+	ex.printStackTrace();
+}
+
+
+
+-------Downside to Threads--------
+
+- Threads can lead to concurrency issues.
+
+- Deadly scenario: two or more threads have access to a single object's data. 
+
+
+
+---------'Syncrhonized' keyword-----------
+
+- synchronized = a thread needs a key in order to access the synchronized code. 
+
+- synchronized keyword = to modify a method so that only one thread at a time can access it.
+
+Example: 
+
+private syncrhonized void makeWithdrawal() {
+	.....
+}
+
+
+
+- A thread can enter a synchronized method only if the thread can get the key to the object's lock. 
+
+
+- Only synchronize the bare minimum that should be synchronized, because it can slow the program down and restrict concurrency.
+
+- The deadly side of synchronization is thread deadlock (when you have two threads, both threads hold a key the other thread wants).
 
