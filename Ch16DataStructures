@@ -2,3 +2,119 @@ CH 16 DATA STRUCTURES: NOTES
 
 --------Sorting---------
 
+ArrayList is not the only collection. There are a few others, such as: 
+
+- TreeSet = Keeps the elements sorted and prevents duplicates.
+
+
+- HashMap = Let's you store and access elements as name/value pairs.
+
+
+- LinkedList = Designed to give better performance when you insert or delete elements from the middle of the collection. 
+
+
+- HashSet = Prevents duplicates in the collection, and given an element, can find that element in the collection quickly.
+
+
+- LinkedHashMap = Like a regular HashMap, except it can remember the order in which elements (name/value pairs) were inserted, or it can be configued to remember the order in which elements were last accessed. 
+
+
+- To sort a list of songs, you could use 'TreeSet' or the 'Collections.sort()' method. 
+
+
+- The collections.sort() method sorts a list of Strings alphabetically.
+
+
+- The sort() method can take only lists of Comparable objects (Comparable is an interface).
+
+
+
+---------Generics----------
+
+- Generics mean more type-safety (code that makes the compiler stop you from putting a Dog into a list of Ducks).
+
+
+- Before generics, there was no way to declare the type of an ArrayList, so its add() method took type Object.
+
+- With generics, you can put only Fish objects in the ArrayList<Fish>, so the objects come out as Fish references. 
+
+
+3 Things that matter the most about generics:
+
+1. Creating instances of generified classes (like ArrayList).
+
+new ArrayList<Song>()
+
+
+2. Declaring and assigning variables of generic types.
+
+List<Song> songList = new ArrayList<Song>()
+
+
+3. Declaring (and invoking) methods that take generic types. 
+
+void foo(List<Song> list) 
+
+x.foo(songList)
+
+
+
+
+---------Generic Classes----------
+
+- ArrayList is a generic class.
+
+- ArrayList<E> = E stands for element
+
+- Generic class = the class declaration includes a type parameter. 
+
+
+---------Generic Methods----------
+
+- A generic method = the method declaration uses a type parameter in its signature. 
+
+
+How to use type parameters in a method: 
+
+1. Using a type parameter defined in the class declaration. 
+
+public class ArrayList<E> extends AbstractList<E>... {
+	public boolean add(E o)
+}
+
+
+2. Using a type parameter that was not defined in the class declaration.
+
+public <T extends Animal> void takeThing(ArrayList<T> list)
+
+
+
+- In generics, the keyword "extends" really means "is-a" and works for both classes and interfaces.
+
+
+- We can pass the ArrayList<Song> to the sort() method only if the Song class implements Comparable, since that is the way the sort() method was declared. 
+
+
+java.lang.Comparable: 
+
+public interface Comparable<T> {
+	int compareTo(T o);
+}
+
+
+
+----------Comparator---------
+
+- Comparator is a class. A Comparator is external to the element type you're comparing.
+
+public interface Comparator<T> {
+	int compare(T o1, T o2);
+}
+
+
+
+- If you pass a Comparator to the sort() method, the sort order is determined by the Comparator rather than the element's own compareTo() method.
+
+
+
+
