@@ -39,7 +39,7 @@ ArrayList is not the only collection. There are a few others, such as:
 - With generics, you can put only Fish objects in the ArrayList<Fish>, so the objects come out as Fish references. 
 
 
-3 Things that matter the most about generics:
+3 things that matter the most about Generics:
 
 1. Creating instances of generified classes (like ArrayList).
 
@@ -67,6 +67,7 @@ x.foo(songList)
 - ArrayList<E> = E stands for element
 
 - Generic class = the class declaration includes a type parameter. 
+
 
 
 ---------Generic Methods----------
@@ -115,6 +116,67 @@ public interface Comparator<T> {
 
 - If you pass a Comparator to the sort() method, the sort order is determined by the Comparator rather than the element's own compareTo() method.
 
+
+
+
+---------Collection API----------
+
+- The Collection API has 3 main interfaces: List, Set, and Map.
+
+List (ArrayList, LinkedList, Vector):
+
+- When sequence matters (Collections that know about Index position).
+
+
+
+Set (TreeSet, LinkedHashSet, HashSet):
+
+- When uniqueness matters (Collections that do not allow duplicates).
+
+- You can never have more than one element reference the same object.
+
+
+
+Map (TreeMap > SortedMap > Map, HashMap, LinkedHashMap, HashTable):
+
+- When finding something by key matters (Collections that use key-value pairs).
+
+- You can have two keys that reference the same value, but you cannot have duplicate keys. 
+
+- Keys are typically String names, and they can be any object.
+
+- Maps are still collections, even though they don't include java.util.Collection in their inheritance tree.
+
+
+
+--------Reference Equality----------
+
+- Reference Equality = Two references, one object on the heap. 
+
+- Two references that refer to the same object on the heap are equal. 
+
+- If you call the hashCode() method on both references, you'll get the same result.
+
+
+--------Object Equality----------
+
+- Object Equality = Two references, two objects on the heap, but the objects are considered meaningfully equivalent.
+
+- If you want to treat two different Song objects as equal, you must override both the hashCode() and equals() methods inherited from class Object. 
+
+Example: 
+
+if (foo.equals(bar)) && foo.hashCode() == bar.hashCode() {
+	// both references are referring to either a single object, or to two objects that are equal.
+}
+
+
+
+- When you put an object into a Hashset, it uses the object's hashcode value to determine where to put the object in the Set. 
+
+- If one object's hashcode is different than another, the HashSet assumes there is no way the objects are equal. So you MUST OVERRIDE hashCode() to make sure the objects have the same value. 
+
+- If the add() method returns false, you know the new object was a duplicate of something already in the set. 
 
 
 
