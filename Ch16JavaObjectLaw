@@ -1,0 +1,16 @@
+------Java Object Law for HashCode() and equals()-----
+
+- The API docs for classObject state the rules you must follow: 
+
+1. If two objects are equal, they must have matching hashcodes. 
+
+2. If two objects are equal, calling equals on either object must return true. (ex. if (a.equals(b), then (b.equals(a) )
+
+3. If you override equals(), you must override hashCode().
+
+
+
+- a.equals(b) must also mean a.hashCode() == b.hashCode()
+
+- a.hashCode() == b.hashCode() does not have to mean a.equals(b)
+

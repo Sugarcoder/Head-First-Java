@@ -48,55 +48,66 @@ public class Jukebox6
 }
 
 
-class SongBad implements Comparable <SongBad>
+class Song implements Comparable <Song>
 {
     String title;
     String artist;
     String rating;
     String bpm;
+
+
+    public boolean equals(Object aSong) {      // Object aSong = The HashSet sends it another song
+        SongBad s = (SongBad) aSong;
+        return getTitle().equals(s.getTitle());      // All we have to do is ask one title if it's equal to the other song's title.
+    }
+    
+
+    // HasCode will get rid of the duplicates.
+    // The String class has an overriden hashCode() method, so you can just return the result of calling hashCode() on the title. 
+
+    public int hashCode() {
+        return title.hashCode();
+    }
     
     
-    public SongBad(String t, String a, String r, String b) {
+
+    public int compareTo(SongBad s)
+    {
+        return title.compareTo(s.getTitle());
+    }
+
+
+
+    Song(String t, String a, String r, String b) {
         title = t;
         artist = a;
         rating = r;
         bpm = b;
     }
-    public boolean equals(Object aSong) {
-        SongBad s = (SongBad) aSong;
-        return getTitle().equals(s.getTitle());
+
+
+    public String getTitle() {
+        return title;
     }
-    
-    //leaving this out makes this a bad form of song.  Uncomment this to get rid of the duplicates
-    /*public int hashCode() {
-        return title.hashCode();
-    }
-    */
-    
-    public int compareTo(SongBad s)
-    {
-        return title.compareTo(s.getTitle());
-    }
+
 
     public String getArtist()
     {
         return artist;
     }
 
-    public String getBpm()
-    {
-        return bpm;
-    }
 
     public String getRating()
     {
         return rating;
     }
 
-    public String getTitle()
+
+    public String getBpm()
     {
-        return title;
+        return bpm;
     }
+
     
     public String toString() {
         return title;
