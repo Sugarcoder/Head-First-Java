@@ -14,3 +14,10 @@
 
 - a.hashCode() == b.hashCode() does not have to mean a.equals(b)
 
+
+
+
+----------TreeSets and Sorting-----------
+
+- TreeSet is similar to HashSet (it prevents duplicates).
+
