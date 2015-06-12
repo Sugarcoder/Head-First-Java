@@ -1,0 +1,10 @@
+CH 17 PACKAGES, JARS & DEPLOYMENT
+
+- A Java program is a bunch of classes. 
+
+Deployement options: 
+- Local (executable JAR)
+- Local / Remote Combination (client portion running on the user's local system, connected to a server)
+- Remote (Enter app running on a server - ex. web browser)
+
+
