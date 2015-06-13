@@ -21,5 +21,7 @@
 
 - TreeSet is similar to HashSet (it prevents duplicates).
 
+- It works just like the sort() method (TreeSet uses each object's compareTo() method for the sort).
+
 
 
