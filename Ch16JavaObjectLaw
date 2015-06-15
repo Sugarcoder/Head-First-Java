@@ -69,11 +69,67 @@ class Book implements Comparable {
 
 - TreeSet works like a sort() method. 
 
+- You can use a custom Comparator that knows how to sort the elements in the set. 
+
+Example: 
+
+public class BookCompare implements Comparator<Book>{
+	public int compare(Book one, Book two) {
+		return (one.title.compareTo(two.title));
+	}
+}
+
+class Test {
+	public void go() {
+	Book b1 = new Book("How Cats Work");
+	Book b2 = new Book("Remix Your Body");
+	Book b3("Finding Nemo");
+
+	BookCompare bCompare = new BookCompare();
+	TreeSet<Book> tree = new TreeSet<Book>(bCompare);
+
+	tree.add(new Book("How Cats Work"));
+	tree.add(new Book("Remix Your Body"));
+	tree.add(new Book("Finding Nemo"));
+
+	System.out.println(tree);
+	}
+}
 
 
 
 
+----------MAPS----------
 
+- Each element in a Map is actually TWO objects - a key and a value. You can have duplicate values, but not duplicate keys. 
+
+Example: Keys - "Ball1", "Ball2", "Ball3"
+
+
+- HashMap needs TWO type parameters, one for the key and one for the value.
+
+Example: 
+
+import java.util.*;
+
+public class TestMap {
+	public static void main(String[] args) {
+
+		HashMap<String, Integer> scores = new HashMap<String, Integer>();
+
+		scores.put("Kathy", 25);       // Use put() instead of add(), and it takes two arguments (key, value).
+		scores.put("Bill", 300);
+		scores.put("Seth", 100);
+
+		System.out.println(scores);
+		System.out.println(scores.get("Bill"));     // The get() method takes a key, and returns the value (in this case an integer).
+	}
+}
+
+
+
+
+-----------Generic Lists------------
 
 
 
