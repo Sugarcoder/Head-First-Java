@@ -23,5 +23,65 @@
 
 - It works just like the sort() method (TreeSet uses each object's compareTo() method for the sort).
 
+- Downside is that even if you don't need sorting, TreeSet takes a performance hit. 
+
+
+Example: 
+
+TreeSet<Song> songSet = new TreeSet<Song>();     
+
+// Instantiate a TreeSet instead of a HashSet. Calling the no-arg TreeSet constructor means the set will use the Song object's compareTo() method for the sort.
+
+
+songSet.addAll(songList);
+
+// We can add all the songs from the HashSet using addAll() (or we can add the songs individually using SongSet.add() just like using ArrayList).
+
+
+
+- TreeSet elements MUST be comparable.
+
+
+
+---------To Use TreeSet---------
+
+To use a TreeSet, one of these things must be true: 
+
+1. The elements in the list must be of a type that implements Comparable. 
+
+Example: 
+
+class Book implements Comparable {
+	String title;
+	public Book (String t) {
+		title = t;
+	}
+
+	public int compareTo(object b) {
+		Book book = (Book) b:
+		return (title.compareTo(book.title));
+	}
+}
+
+
+
+2. You use the TreeSet's overloaded constructor that takes a Comparator. 
+
+- TreeSet works like a sort() method. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
