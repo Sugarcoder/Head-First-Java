@@ -4,7 +4,133 @@ CH 17 PACKAGES, JARS & DEPLOYMENT
 
 Deployement options: 
 - Local (executable JAR)
+
 - Local / Remote Combination (client portion running on the user's local system, connected to a server)
+
 - Remote (Enter app running on a server - ex. web browser)
+
+
+
+---------Organizing Your Classes---------
+
+- Definitely should separate source code and class files (A single directory with a pile of source code and class files is a mess)!
+
+
+- Use the -d compiler option to organize. 
+
+- With this scheme, you create a project directory. And inside that, you create a directory called 'source' and a directory called 'classes'.
+
+- Save the source code (.java files) into the source directory. Save the classes (.class files) into the classes directory. 
+
+Example: 
+
+%cd MyProject/source
+%javac -d ../classes  MyApp.java       // tells the compiler to put the compiled code (class files) into the classes directory.
+
+
+%javac  -d ../classes  *.java    // *.java compiles ALL source files in the current directory 
+
+
+- Running your code: 
+
+%cd MyProject/classes      // run your program from the 'classes' directory. 
+%java Mini     
+
+
+
+
+--------Putting Java In A JAR----------
+
+- JAR = Java Archive (based on the pkzip file format), and lets you bundle all of your classes together into a single JAR file. 
+
+- Executable JAR = the end-user doesn't have to pull the class files out before running the program. 
+
+- The user can run the app while the class files are still in the JAR. The trick is to create a 'manifest' file (which goes in the JAR, and holds info about the files in the JAR).
+
+
+
+- To make a JAR executable, the manifest must tell the JVM which class has the main() method! 
+
+
+
+
+--------Executable JAR----------
+
+Making an executable JAR: 
+
+1. Make sure all of your class files are in the 'classes' directory. 
+
+
+2. Create a manifest.txt file that states which class has the main() method. 
+
+"Main-Class: MyApp" (don't put .class at the end)
+
+
+3. Run the jar tool to create a JAR file that contains everything in the classes directory, plus the manifest. 
+
+%cd MiniProject/classes
+%jar -cvmf manifest.txt appl.jar *.class
+
+OR 
+
+%jar -cvmf manifest.txt appl.jar MyApp.class
+
+
+
+- The JVM has to 'see' the JAR, so it must be in your classpath. The easiest way to make the JAR visible is to make your working directory the place where the JAR is. 
+
+
+%cd MyProject/classes 
+
+%java -jar app1.jar        
+
+// '-jar' = tells the JVM you're giving it a JAR instead of a class. 
+
+
+// 'app1.jar' = the JVM looks inside this JAR for a manifest with an entry for the 'main' class. If it doesn't find one, you get a runtime exception.
+
+
+
+
+
+---------Packages----------
+
+- Put your classes inside Packages (Packages prevent class name conflicts).
+
+- Class ArrayList is technically java.util.ArrayList. 
+
+- JButton is really javax.swing.JButton.
+
+- Socket is really java.net.Socket.
+
+
+- The best way to prevent name conflicts is to preface your packages with your reverse domain name. 
+
+Example: 
+
+com.headfirstbooks.Book;       // com.headfirstbooks is the package name, Book is the class name (class name is always capitalized).
+
+
+---------How To Put Your Class Into A Package--------
+
+- You must put a class into a directory structure that matches the package hierarchy. 
+
+To put your class in a package: 
+
+1. Choose a package name (com.headfirstjava.PackageExercise).
+
+2. Put a package statement in your class. 
+
+- It must be the first statement in the source code file.  
+
+Example: 
+
+package com.headfirstjava;
+
+
+
+
+
+
 
 
