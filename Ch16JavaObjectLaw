@@ -131,13 +131,109 @@ public class TestMap {
 
 -----------Generic Lists------------
 
+- If a method argument is an array of Animals, it will also take an array of any Animal subtype. 
+
+Example: 
+- If a method is declared as...
+
+void foo(Animal[] a) {}
+
+- You can call both of these...
+
+foo(anAnimalArray);
+foo(aDogArray);
+
+
+--------Reminder of how a regular array is like-------
+
+import java.util.*;
+
+public class TestGenerics1 {
+	public static void main(String[] args) {
+		new TestGenerics1().go();
+	}
+
+	public void go() {
+		Animals[] animals = {new Dog(), new Cat(), new Dog()};
+		Dog[] dogs = {new Dog(), new Dog(), new Dog()};
+		takeAnimals(animals);
+		takeAnimals(dogs); 
+	}
+
+	public void takeAnimals(Animals[] animals) {
+		for(Animal a: animals) {
+			a.eat();
+		}
+	}
+}
+
+
+abstract class Animal {
+	void eat() {
+		System.out.println("animals eating");
+	}
+}
+
+class Dog extends Animal {
+	void bark() {
+	}
+}
+
+class Cat extends Animal {
+	void meow() {
+	}
+}
 
 
 
 
+---------Using Polymorphic Arguments and Generics--------
+
+- If you declare a method to take ArrayList<Animal>, it can only take an ArrayList<Animal>...not ArrayList<Dog> or ArrayList<Cat>.
+
+- Array types are checked again at runtime, but collection type checks happen only when you compile. 
+
+- There is a way to create a method argument that can accept an ArrayList of any Animal subtype. The simplest way is to use a 'wildcard'(?).
+
+- If you want to take an ArrayList of types that implement the Pet interface, you'd declare it as: ArrayList<? extends Pet>
+
+Example: 
+
+public void takeAnimals(ArrayList<? extends Animal> animals) {
+	for(Animal a: animals) {
+		a.eat();
+	}
+}
 
 
 
+- You can still invoke methods on the elements in the list, but you cannot add elements to the list. 
+(You can do things with the list elements, but you cannot put new things in the list)
 
+This is OK: 
+
+for(Animals[] animals) {
+	a.eat();
+}
+
+
+This is NOT OK: 
+
+animals.add(new Cat());
+
+
+
+----------Alternative Syntax For Doing The Same Thing----------
+
+- A different way of declaring the type parameter, but the results are the same...
+
+This: 
+
+public <T extends Animal> void takeThing(ArrayList<T> list)
+
+
+Is the same as this: 
+
+public void takeThing(ArrayList<? extends Animal> list)
 
 
