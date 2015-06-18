@@ -226,4 +226,45 @@ If you typed 'com.headfirstjava.PackageExercise', you must put the PackageExerci
 4. The Web server 'serves' up the requested .jar file.
 
 
+5. JWS gets the JAR and starts the app by calling the specific main() method (just like an executable JAR).
+
+
+
+
+-----------Servlets-----------
+
+- Servlets are Java programs that run on an HTTP web server. 
+
+- Servlet code is code that runs on the server, to do work as whatever the client requests.
+
+
+
+------------Steps for making and running a Servlet----------
+
+1. Find out where your servlets need to be placed. Your server needs to be able to 'see' them.
+
+
+
+2. Get the servlets .jar and add it to your classpath. 
+
+- You need the servlets classes packaged into the sevlets.jar file. 
+
+
+
+3. Write a servlet class by extending HttpServlet.
+
+public class MyServletA extends HttpServlet { ... }
+
+- A typical servlet extends HttpServlet and overrides one or more servlet methods, such as doGet() or doPost(). 
+
+
+
+4. Write an HTML page that invokes your servlet. 
+
+<a href="servlets/MyServletA">This is an awesome servlet.</a>
+
+
+
+5. Make your servlet and HTML page available to your server. 
+
 
