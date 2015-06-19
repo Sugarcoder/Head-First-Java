@@ -1,0 +1,176 @@
+CH 18 REMOTE DEPLOYMENT WITH RMI: NOTES
+
+
+-----------Servlets-----------
+
+- Servlets are Java programs that run on an HTTP web server. 
+
+- Servlet code is code that runs on the server, to do work as whatever the client requests.
+
+
+
+------------Steps for making and running a Servlet----------
+
+1. Find out where your servlets need to be placed. Your server needs to be able to 'see' them.
+
+
+
+2. Get the servlets .jar and add it to your classpath. 
+
+- You need the servlets classes packaged into the sevlets.jar file. 
+
+
+
+3. Write a servlet class by extending HttpServlet.
+
+public class MyServletA extends HttpServlet { ... }
+
+- A typical servlet extends HttpServlet and overrides one or more servlet methods, such as doGet() or doPost(). 
+
+
+
+4. Write an HTML page that invokes your servlet. 
+
+<a href="servlets/MyServletA">This is an awesome servlet.</a>
+
+
+
+5. Make your servlet and HTML page available to your server. 
+
+
+
+
+-----------Enterprise JavaBeans (Enterprise application Server - J2EE): RMI on steroids-------------
+
+- RMI is great for writing and running remote services, but not for a huge commerce sites (when a ton of people access the server at once).
+
+- A J2EE server = includes both a web server and an Enterprise JavaBeans (EJB) server, so that you can deploy an application that includes both servlets and EJBs. 
+
+
+- An EJB server adds a bunch of services that you don't get with straight RMI (things like transactions, security, concurrency, database management, and networking).
+
+
+
+
+-----------Jini (RMI with wings)------------
+
+- Jini uses RMI, and also gives you a few key features like adaptive discovery and self-healing networks.
+
+- With Jini, the client only has to know one thing: the interface implemented by the service. 
+
+
+
+Adaptive discovery in action.....
+
+1. Jini lookup service is launched somewhere on the network, and announces itself using IP multicast. 
+
+
+2. An already-running Jini service on another machine asks to be registered with this newly-announced lookup service. It registers by capability, rather than by name. It registers as the service interface it implements. It sends a serialized object to be placed in the lookup service. 
+
+
+3. A client on the network wants something that implements the ScientificCalculator interface. It has no idea where that thing exists, so it asks the lookup service. 
+
+
+4. The lookup service responds, since it does have something registered as a ScientificCalculator interface. 
+
+
+
+
+Self-healing network in action.....
+
+1. A Jini service has asked to register with the lookup service. The lookup service responds with a "lease". The newly-registered service must keep renewing the lease, or the lookup service assumes the service has gone offline. The lookup service wants to always present an accurate picture to the rest of the network about which services are available. 
+
+
+2. The service goes offline (somebody shuts it down), so it fails to renew its lease with the lookup service. The lookup service drops it. 
+
+
+
+
+-----------Assertions------------
+
+- Assertions are like System.out.println() statements on steroids. At runtime, if you do nothing, the assert statements (you added to your code) will be ignored. 
+
+- If you tell the JVM to enable your assertions, they will help you do your debugging, without changing a line of code!
+
+- Leaving your assert statement codes can be really valuable when your code is already deployed in the field. 
+
+
+
+How to make Assertions work: 
+
+- Add assertion statements to your code wherever you believe that something must be true. 
+
+Example: 
+
+assert (height > 0);
+
+// If true, program continues normally. If false, throw an AssertionError.
+
+
+- You can add more code if you like: 
+
+assert (height > 0) : "height = " + height + "weight = " + weight;
+
+
+
+Compiling with assertions: 
+
+javac TestDriveGame.java;
+
+
+
+Running with assertions: 
+
+java -ea TestDriveGame;
+
+
+
+
+
+----------Anonymous & Static Nested Classes-----------
+
+- A static nested class looks just like the non-static classes (except marked with the keyword 'static').
+
+
+- Static nested classes still get access to any private members of the outer class, but only the ones that are also static. 
+
+
+- Non-static inner classes are often referred to as inner classes. 
+
+
+
+- Access modifiers = public, private, protected
+
+
+- Use 'public' for classes, constants (static final variables) and methods that you're exposing to the other code and most constructors. 
+
+
+- Use 'private' for all instance variables, and for methods you don't want outside code to call. 
+
+
+- 'protected' alows subclasses to inherit the protected thing, even if those subclasses are outside the package of the superclass they extend. 'protected' access applies only to inheritance. 
+
+
+
+
+
+------------Enumerations------------
+
+- Enumeration = Sometimes, you want to create a set of constant values to represent the only valid values for a variable. 
+
+- You can create your own constants by marking a variable 'static final'.
+
+
+New official "enum": 
+
+public enum Members { BOB, JOE, MIKE };
+public members selectedBandMember;
+
+if (selectedBandMember == Members.BOB) {
+	// do something
+}
+
+
+- Enums extend java.lang.Enum.
+
+
