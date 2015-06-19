@@ -277,3 +277,40 @@ public class MyServletA extends HttpServlet { ... }
 - A J2EE server = includes both a web server and an Enterprise JavaBeans (EJB) server, so that you can deploy an application that includes both servlets and EJBs. 
 
 
+- An EJB server adds a bunch of services that you don't get with straight RMI (things like transactions, security, concurrency, database management, and networking).
+
+
+
+
+-----------Jini (RMI with wings)------------
+
+- Jini uses RMI, and also gives you a few key features like adaptive discovery and self-healing networks.
+
+- With Jini, the client only has to know one thing: the interface implemented by the service. 
+
+
+
+Adaptive discovery in action.....
+
+1. Jini lookup service is launched somewhere on the network, and announces itself using IP multicast. 
+
+
+2. An already-running Jini service on another machine asks to be registered with this newly-announced lookup service. It registers by capability, rather than by name. It registers as the service interface it implements. It sends a serialized object to be placed in the lookup service. 
+
+
+3. A client on the network wants something that implements the ScientificCalculator interface. It has no idea where that thing exists, so it asks the lookup service. 
+
+
+4. The lookup service responds, since it does have something registered as a ScientificCalculator interface. 
+
+
+
+
+Self-healing network in action.....
+
+1. A Jini service has asked to register with the lookup service. The lookup service responds with a "lease". The newly-registered service must keep renewing the lease, or the lookup service assumes the service has gone offline. The lookup service wants to always present an accurate picture to the rest of the network about which services are available. 
+
+
+2. The service goes offline (somebody shuts it down), so it fails to renew its lease with the lookup service. The lookup service drops it. 
+
+
