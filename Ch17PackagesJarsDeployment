@@ -314,3 +314,80 @@ Self-healing network in action.....
 2. The service goes offline (somebody shuts it down), so it fails to renew its lease with the lookup service. The lookup service drops it. 
 
 
+
+
+-----------Assertions------------
+
+- Assertions are like System.out.println() statements on steroids. At runtime, if you do nothing, the assert statements (you added to your code) will be ignored. 
+
+- If you tell the JVM to enable your assertions, they will help you do your debugging, without changing a line of code!
+
+- Leaving your assert statement codes can be really valuable when your code is already deployed in the field. 
+
+
+
+How to make Assertions work: 
+
+- Add assertion statements to your code wherever you believe that something must be true. 
+
+Example: 
+
+assert (height > 0);
+
+// If true, program continues normally. If false, throw an AssertionError.
+
+
+- You can add more code if you like: 
+
+assert (height > 0) : "height = " + height + "weight = " + weight;
+
+
+
+Compiling with assertions: 
+
+javac TestDriveGame.java;
+
+
+
+Running with assertions: 
+
+java -ea TestDriveGame;
+
+
+
+
+
+----------Anonymous & Static Nested Classes-----------
+
+- A static nested class looks just like the non-static classes (except marked with the keyword 'static').
+
+
+- Static nested classes still get access to any private members of the outer class, but only the ones that are also static. 
+
+
+- Non-static inner classes are often referred to as inner classes. 
+
+
+
+- Access modifiers = public, private, protected
+
+
+- Use 'public' for classes, constants (static final variables) and methods that you're exposing to the other code and most constructors. 
+
+
+- Use 'private' for all instance variables, and for methods you don't want outside code to call. 
+
+
+- 'protected' alows subclasses to inherit the protected thing, even if those subclasses are outside the package of the superclass they extend. 'protected' access applies only to inheritance. 
+
+
+
+
+
+------------Enumerations------------
+
+- Enumeration = Sometimes, you want to create a set of constant values to represent the only valid values for a variable. 
+
+- You can create your own constants by marking a variable 'static final'.
+
+
