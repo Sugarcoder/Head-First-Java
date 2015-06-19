@@ -268,3 +268,12 @@ public class MyServletA extends HttpServlet { ... }
 5. Make your servlet and HTML page available to your server. 
 
 
+
+
+-----------Enterprise JavaBeans (Enterprise application Server - J2EE): RMI on steroids-------------
+
+- RMI is great for writing and running remote services, but not for a huge commerce sites (when a ton of people access the server at once).
+
+- A J2EE server = includes both a web server and an Enterprise JavaBeans (EJB) server, so that you can deploy an application that includes both servlets and EJBs. 
+
+
